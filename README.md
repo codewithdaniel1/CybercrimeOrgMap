@@ -117,8 +117,7 @@ Primary source families used in the current dataset:
   [CERT/CC](https://www.sei.cmu.edu/about/divisions/cert/),
   [CISA](https://www.cisa.gov/about),
   [FIRST](https://www.first.org/about/),
-  [OWASP Foundation](https://owasp.org/about/),
-  [Chaos Computer Club](https://www.ccc.de/en/club)
+  [OWASP Foundation](https://owasp.org/about/)
 
 ## Updating the data
 

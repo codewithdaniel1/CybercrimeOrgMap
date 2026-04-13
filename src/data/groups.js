@@ -689,25 +689,6 @@ export const GROUPS = [
       'OWASP describes itself as a nonprofit foundation improving software security and lists a physical office address in Wilmington, Delaware.',
     sourceLabel: 'OWASP Foundation',
   },
-  {
-    id: 'chaos-computer-club',
-    name: 'Chaos Computer Club',
-    type: 'white-hat',
-    country: 'Germany',
-    city: 'Berlin',
-    lat: 52.52,
-    lng: 13.405,
-    originPrecision: CITY_PIN,
-    firstSeen: 1981,
-    scope: 'Regional',
-    aliases: ['CCC'],
-    tags: ['hacker ethics', 'security advocacy'],
-    knownFor:
-      'Promoting hacker ethics, freedom of information, privacy, and public security research through a long-running community of technologists and researchers.',
-    attribution:
-      'The Chaos Computer Club says it was founded in 1981 and operates as a decentralized hacker community; the pin uses Berlin as the founding origin described on the club site.',
-    sourceLabel: 'CCC official site',
-  },
 ];
 
 export function getTypeMeta(type) {
