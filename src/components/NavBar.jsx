@@ -42,6 +42,34 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
   },
+  searchWrap: {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  searchInput: {
+    width: '270px',
+    maxWidth: '34vw',
+    fontFamily: 'var(--font-mono)',
+    fontSize: '11px',
+    color: 'var(--text)',
+    background: 'var(--bg)',
+    border: '0.5px solid var(--border)',
+    borderRadius: 'var(--radius-sm)',
+    padding: '7px 34px 7px 10px',
+    outline: 'none',
+  },
+  clearButton: {
+    position: 'absolute',
+    right: '6px',
+    background: 'none',
+    border: 'none',
+    color: 'var(--text-faint)',
+    cursor: 'pointer',
+    fontSize: '14px',
+    lineHeight: 1,
+    padding: '2px 4px',
+  },
   badge: {
     fontFamily: 'var(--font-mono)',
     fontSize: '11px',
@@ -86,8 +114,9 @@ const injectKeyframes = () => {
   document.head.appendChild(style);
 };
 
-export default function NavBar({ loading, visibleCount }) {
+export default function NavBar({ loading, visibleCount, searchQuery, onSearchChange }) {
   const [time, setTime] = useState('');
+  const hasSearch = searchQuery.trim().length > 0;
 
   useEffect(() => {
     injectKeyframes();
@@ -112,7 +141,29 @@ export default function NavBar({ loading, visibleCount }) {
         <span style={styles.tagline}>cyber actor origin map</span>
       </div>
       <div style={styles.right}>
-        <div style={styles.badge}>{visibleCount} visible</div>
+        <div style={styles.badge}>
+          {loading ? '…' : `${visibleCount} ${hasSearch ? 'matches' : 'visible'}`}
+        </div>
+        <div style={styles.searchWrap}>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(event) => onSearchChange(event.target.value)}
+            placeholder="Search all actors, aliases, tags..."
+            aria-label="Search all mapped actors"
+            style={styles.searchInput}
+          />
+          {searchQuery ? (
+            <button
+              type="button"
+              onClick={() => onSearchChange('')}
+              aria-label="Clear search"
+              style={styles.clearButton}
+            >
+              x
+            </button>
+          ) : null}
+        </div>
         <a href="/data/cyber-actor-atlas.csv" download style={styles.downloadLink}>
           CSV / Excel
         </a>

@@ -66,8 +66,9 @@ function Skeletons() {
   ));
 }
 
-export default function VenueList({ venues, selectedVenue, onSelectVenue, loading }) {
+export default function VenueList({ venues, selectedVenue, onSelectVenue, loading, searchQuery }) {
   const selectedRef = useRef(null);
+  const hasSearch = searchQuery.trim().length > 0;
 
   // Auto-scroll to selected card
   useEffect(() => {
@@ -88,7 +89,11 @@ export default function VenueList({ venues, selectedVenue, onSelectVenue, loadin
         {loading && venues.length === 0 ? (
           <Skeletons />
         ) : venues.length === 0 ? (
-          <div style={styles.empty}>No mapped actors in this viewport.</div>
+          <div style={styles.empty}>
+            {hasSearch
+              ? `No actors matched "${searchQuery}".`
+              : 'No mapped actors in this viewport.'}
+          </div>
         ) : (
           venues.map((v) => {
             const isSelected = selectedVenue?.id === v.id;

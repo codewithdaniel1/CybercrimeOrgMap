@@ -5,7 +5,6 @@ import MapView from './components/MapView.jsx';
 import VenueList from './components/VenueList.jsx';
 import DetailPanel from './components/DetailPanel.jsx';
 import { useGroups } from './hooks/useGroups.js';
-import { ORIGIN_METHOD_NOTE } from './data/groups.js';
 
 const styles = {
   app: {
@@ -35,24 +34,15 @@ const styles = {
     overflow: 'hidden',
     flexShrink: 0,
   },
-  noteBanner: {
-    padding: '8px 14px',
-    background: 'rgba(114,168,255,0.09)',
-    borderBottom: '0.5px solid rgba(114,168,255,0.2)',
-    color: '#9dc0ff',
-    fontSize: '11px',
-    fontFamily: 'var(--font-mono)',
-    lineHeight: 1.45,
-    flexShrink: 0,
-  },
 };
 
 export default function App() {
   const [activeFilter, setActiveFilter]   = useState('all');
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [mapBounds, setMapBounds]         = useState(null);
+  const [searchQuery, setSearchQuery]     = useState('');
 
-  const { groups, loading } = useGroups(activeFilter, mapBounds);
+  const { groups, loading } = useGroups(activeFilter, mapBounds, searchQuery);
 
   const handleBoundsChange = useCallback((bounds) => {
     setMapBounds(bounds);
@@ -67,7 +57,12 @@ export default function App() {
 
   return (
     <div style={styles.app}>
-      <NavBar loading={loading} visibleCount={groups.length} />
+      <NavBar
+        loading={loading}
+        visibleCount={groups.length}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+      />
       <FilterBar active={activeFilter} onChange={setActiveFilter} />
       <div style={styles.main}>
         <div style={styles.mapWrapper}>
@@ -76,15 +71,16 @@ export default function App() {
             selectedVenue={selectedGroup}
             onSelectVenue={setSelectedGroup}
             onBoundsChange={handleBoundsChange}
+            searchActive={searchQuery.trim().length > 0}
           />
         </div>
         <div style={styles.sidePanel}>
-          <div style={styles.noteBanner}>{ORIGIN_METHOD_NOTE}</div>
           <VenueList
             venues={groups}
             selectedVenue={selectedGroup}
             onSelectVenue={setSelectedGroup}
             loading={loading}
+            searchQuery={searchQuery}
           />
           <DetailPanel
             venue={selectedGroup}

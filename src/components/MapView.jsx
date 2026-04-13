@@ -100,10 +100,11 @@ function popupHTML(group) {
   `;
 }
 
-export default function MapView({ venues, selectedVenue, onSelectVenue, onBoundsChange }) {
+export default function MapView({ venues, selectedVenue, onSelectVenue, onBoundsChange, searchActive }) {
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const layersRef = useRef({});
+  const searchKey = venues.map((group) => group.id).sort().join('|');
 
   useEffect(() => {
     const container = containerRef.current;
@@ -216,6 +217,17 @@ export default function MapView({ venues, selectedVenue, onSelectVenue, onBounds
 
     map.flyTo([selectedVenue.lat, selectedVenue.lng], 5, { duration: 1.1 });
   }, [selectedVenue]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !searchActive || venues.length === 0) return;
+
+    const bounds = L.latLngBounds(venues.map((group) => [group.lat, group.lng]));
+    map.fitBounds(bounds, {
+      padding: [36, 36],
+      maxZoom: venues.length === 1 ? 5 : 4,
+    });
+  }, [searchActive, searchKey, venues]);
 
   return <div ref={containerRef} style={{ width: '100%', height: '100%' }} />;
 }
