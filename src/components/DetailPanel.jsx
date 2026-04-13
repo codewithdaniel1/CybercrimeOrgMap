@@ -2,14 +2,32 @@ import React from 'react';
 import { getDisplayName, getTypeMeta } from '../data/groups.js';
 
 const PANEL_HEIGHT = 286;
+const panelStyles = {
+  shell: {
+    borderTop: '0.5px solid rgba(255, 255, 255, 0.14)',
+    background:
+      'linear-gradient(180deg, rgba(34, 34, 46, 0.98) 0%, rgba(22, 22, 32, 0.98) 100%)',
+    boxShadow: '0 -18px 36px rgba(0, 0, 0, 0.36)',
+    flexShrink: 0,
+    overflow: 'hidden',
+    transition: 'height 0.28s ease',
+  },
+  inner: {
+    padding: '12px 14px',
+    height: '100%',
+    overflow: 'auto',
+    background:
+      'radial-gradient(circle at top right, rgba(255, 60, 110, 0.12), transparent 34%)',
+  },
+};
 
 function StatCard({ label, value, valueStyle }) {
   return (
     <div style={{
-      background: 'var(--bg)',
+      background: 'rgba(10, 10, 15, 0.72)',
       borderRadius: 'var(--radius-md)',
       padding: '8px 10px',
-      border: '0.5px solid var(--border)',
+      border: '0.5px solid rgba(255, 255, 255, 0.12)',
       flex: 1,
       minWidth: 0,
     }}>
@@ -37,15 +55,11 @@ export default function DetailPanel({ venue, onClose }) {
 
   return (
     <div style={{
-      borderTop: '0.5px solid var(--border)',
-      background: 'var(--surface)',
-      flexShrink: 0,
-      overflow: 'hidden',
+      ...panelStyles.shell,
       height: open ? `${PANEL_HEIGHT}px` : '0px',
-      transition: 'height 0.28s ease',
     }}>
       {venue && (
-        <div style={{ padding: '12px 14px', height: '100%', overflow: 'auto' }}>
+        <div style={panelStyles.inner}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
             <div>
               <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text)', marginBottom: '3px' }}>
@@ -58,15 +72,16 @@ export default function DetailPanel({ venue, onClose }) {
             <button
               onClick={onClose}
               style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--text-faint)',
+                background: 'rgba(255,255,255,0.04)',
+                border: '0.5px solid rgba(255,255,255,0.12)',
+                color: 'var(--text-muted)',
                 cursor: 'pointer',
                 fontSize: '16px',
                 lineHeight: 1,
-                padding: '2px 4px',
+                padding: '4px 8px',
                 marginLeft: '8px',
                 flexShrink: 0,
+                borderRadius: '999px',
               }}
               aria-label="Close detail panel"
             >
@@ -85,8 +100,8 @@ export default function DetailPanel({ venue, onClose }) {
           </div>
 
           <div style={{
-            background: 'rgba(114,168,255,0.08)',
-            border: '0.5px solid rgba(114,168,255,0.2)',
+            background: 'rgba(114,168,255,0.13)',
+            border: '0.5px solid rgba(114,168,255,0.28)',
             borderRadius: 'var(--radius-md)',
             padding: '8px 10px',
             fontSize: '11px',
@@ -101,8 +116,8 @@ export default function DetailPanel({ venue, onClose }) {
           </div>
 
           <div style={{
-            background: 'var(--bg)',
-            border: '0.5px solid var(--border)',
+            background: 'rgba(10, 10, 15, 0.72)',
+            border: '0.5px solid rgba(255, 255, 255, 0.12)',
             borderRadius: 'var(--radius-md)',
             padding: '9px 10px',
             marginBottom: '10px',
@@ -123,8 +138,8 @@ export default function DetailPanel({ venue, onClose }) {
           </div>
 
           <div style={{
-            background: 'rgba(255,255,255,0.02)',
-            border: '0.5px solid var(--border)',
+            background: 'rgba(255,255,255,0.04)',
+            border: '0.5px solid rgba(255, 255, 255, 0.12)',
             borderRadius: 'var(--radius-md)',
             padding: '9px 10px',
             marginBottom: '10px',
