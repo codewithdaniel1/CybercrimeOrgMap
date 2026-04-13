@@ -79,7 +79,7 @@ export default function VenueList({ venues, selectedVenue, onSelectVenue, loadin
   return (
     <>
       <div style={styles.header}>
-        <span style={styles.title}>Mapped Origins</span>
+        <span style={styles.title}>Mapped Actors</span>
         <span style={styles.countBadge}>
           {loading ? '…' : venues.length}
         </span>
@@ -88,7 +88,7 @@ export default function VenueList({ venues, selectedVenue, onSelectVenue, loadin
         {loading && venues.length === 0 ? (
           <Skeletons />
         ) : venues.length === 0 ? (
-          <div style={styles.empty}>No mapped groups in this viewport.</div>
+          <div style={styles.empty}>No mapped actors in this viewport.</div>
         ) : (
           venues.map((v) => {
             const isSelected = selectedVenue?.id === v.id;
