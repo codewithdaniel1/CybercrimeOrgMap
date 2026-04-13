@@ -5,6 +5,7 @@ import MapView from './components/MapView.jsx';
 import VenueList from './components/VenueList.jsx';
 import DetailPanel from './components/DetailPanel.jsx';
 import { useGroups } from './hooks/useGroups.js';
+import { GROUPS } from './data/groups.js';
 
 const styles = {
   app: {
@@ -59,7 +60,7 @@ export default function App() {
     <div style={styles.app}>
       <NavBar
         loading={loading}
-        visibleCount={groups.length}
+        totalGroups={GROUPS.length}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
       />

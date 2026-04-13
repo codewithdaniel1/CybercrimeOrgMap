@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDisplayName, getTypeMeta } from '../data/groups.js';
+import { getDisplayName, getLocationLabel, getTypeMeta } from '../data/groups.js';
 
 const PANEL_HEIGHT = 286;
 const panelStyles = {
@@ -52,6 +52,7 @@ export default function DetailPanel({ venue, onClose }) {
   const open = !!venue;
   const type = venue ? getTypeMeta(venue.type) : null;
   const displayName = venue ? getDisplayName(venue) : '';
+  const locationLabel = venue ? getLocationLabel(venue) : '';
 
   return (
     <div style={{
@@ -66,7 +67,7 @@ export default function DetailPanel({ venue, onClose }) {
                 {displayName}
               </div>
               <div style={{ fontSize: '10px', color: 'var(--text-faint)' }}>
-                {venue.city}, {venue.country}
+                {locationLabel}
               </div>
             </div>
             <button

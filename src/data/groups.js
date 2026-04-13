@@ -93,6 +93,7 @@ export const ORIGIN_METHOD_NOTE =
 
 const COUNTRY_CAPITAL_PIN = 'Country-level attribution pinned to capital';
 const CITY_PIN = 'City-level attribution from public reporting';
+const NO_FIXED_ORIGIN = 'No fixed origin / decentralized collective';
 
 export const GROUPS = [
   {
@@ -531,6 +532,63 @@ export const GROUPS = [
     attribution:
       'MITRE ATT&CK describes Volatile Cedar as a Lebanese threat group motivated by political and ideological interests.',
     sourceLabel: 'MITRE ATT&CK, updated Apr 2025',
+  },
+  {
+    id: 'anonymous',
+    name: 'Anonymous',
+    type: 'hacktivist',
+    country: 'No fixed origin',
+    city: 'Decentralized',
+    lat: null,
+    lng: null,
+    originPrecision: NO_FIXED_ORIGIN,
+    firstSeen: 2003,
+    scope: 'Global',
+    aliases: ['Anons'],
+    tags: ['decentralized', 'hacktivism', 'leaderless collective'],
+    knownFor:
+      'Coordinating high-profile hacktivist actions, website disruptions, leaks, and symbolic cyber campaigns against governments, companies, and institutions around the world.',
+    attribution:
+      'Public reporting consistently describes Anonymous as a decentralized international hacktivist collective with no fixed hierarchy or stable geographic origin.',
+    sourceLabel: 'Harvard Cybersecurity Wiki / Britannica',
+  },
+  {
+    id: 'lulzsec',
+    name: 'LulzSec',
+    type: 'hacktivist',
+    country: 'No fixed origin',
+    city: 'Decentralized',
+    lat: null,
+    lng: null,
+    originPrecision: NO_FIXED_ORIGIN,
+    firstSeen: 2011,
+    scope: 'Global',
+    aliases: ['Lulz Security'],
+    tags: ['decentralized', 'hacktivism', 'splinter collective'],
+    knownFor:
+      'Carrying out a fast, high-profile run of disruptive hacks, leaks, and humiliating breaches against media, gaming, government, and security targets during 2011.',
+    attribution:
+      'Public reporting describes LulzSec as a short-lived hacking collective and an offshoot of the broader Anonymous ecosystem, with members in multiple countries rather than a stable shared origin.',
+    sourceLabel: 'Wired / public reporting',
+  },
+  {
+    id: 'antisec',
+    name: 'AntiSec',
+    type: 'hacktivist',
+    country: 'No fixed origin',
+    city: 'Decentralized',
+    lat: null,
+    lng: null,
+    originPrecision: NO_FIXED_ORIGIN,
+    firstSeen: 2011,
+    scope: 'Global',
+    aliases: ['Operation AntiSec'],
+    tags: ['decentralized', 'hacktivism', 'movement'],
+    knownFor:
+      'Coordinating anti-security and anti-surveillance themed hacking campaigns, leaks, and defacements under a broader Anonymous- and LulzSec-linked banner.',
+    attribution:
+      'Public reporting and the movement’s own statements describe AntiSec as a loose collaborative operation associated with Anonymous and LulzSec rather than a single geographically rooted organization.',
+    sourceLabel: 'Wired / public reporting',
   },
   {
     id: 'apt41',
@@ -989,6 +1047,177 @@ export const GROUPS = [
     sourceLabel: 'Secureworks CTU',
   },
   {
+    id: 'apt-c-36',
+    name: 'APT-C-36',
+    type: 'state-linked-theft',
+    country: 'Colombia',
+    city: 'Bogota',
+    lat: 4.711,
+    lng: -74.0721,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2018,
+    scope: 'Regional',
+    aliases: ['Blind Eagle'],
+    tags: ['South America', 'espionage', 'phishing'],
+    knownFor:
+      'Running espionage-oriented campaigns that primarily target Colombian government institutions and key private-sector organizations in finance, energy, and manufacturing.',
+    attribution:
+      'MITRE ATT&CK tracks APT-C-36 as a suspected South America espionage group focused mainly on Colombian institutions; the atlas uses Colombia as the clearest regional origin inference and pins to Bogota.',
+    sourceLabel: 'MITRE ATT&CK, updated Apr 2025',
+  },
+  {
+    id: 'transparent-tribe',
+    name: 'Transparent Tribe',
+    type: 'state-linked-theft',
+    country: 'Pakistan',
+    city: 'Islamabad',
+    lat: 33.6844,
+    lng: 73.0479,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2013,
+    scope: 'Regional',
+    aliases: ['APT36', 'Mythic Leopard', 'ProjectM', 'COPPER FIELDSTONE'],
+    tags: ['South Asia', 'espionage', 'defense targeting'],
+    knownFor:
+      'Conducting sustained espionage activity against diplomatic, defense, and research targets in India and Afghanistan through lures and custom malware.',
+    attribution:
+      'MITRE ATT&CK describes Transparent Tribe as a suspected Pakistan-based threat group active since at least 2013, which this atlas maps to Islamabad at country level.',
+    sourceLabel: 'MITRE ATT&CK, updated Apr 2024',
+  },
+  {
+    id: 'sidecopy',
+    name: 'SideCopy',
+    type: 'state-linked-theft',
+    country: 'Pakistan',
+    city: 'Islamabad',
+    lat: 33.6844,
+    lng: 73.0479,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2019,
+    scope: 'Regional',
+    aliases: [],
+    tags: ['South Asia', 'espionage', 'credential theft'],
+    knownFor:
+      'Mimicking Sidewinder-style infection chains to target government and military personnel across South Asia with lures, malware loaders, and credential harvesting.',
+    attribution:
+      'MITRE ATT&CK identifies SideCopy as a Pakistani threat group that has primarily targeted South Asian countries since at least 2019.',
+    sourceLabel: 'MITRE ATT&CK, updated Apr 2025',
+  },
+  {
+    id: 'patchwork',
+    name: 'Patchwork',
+    type: 'state-linked-theft',
+    country: 'India',
+    city: 'New Delhi',
+    lat: 28.6139,
+    lng: 77.209,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2015,
+    scope: 'Regional',
+    aliases: ['Hangover Group', 'Dropping Elephant', 'Chinastrats', 'MONSOON', 'Operation Hangover'],
+    tags: ['South Asia', 'espionage', 'government targeting'],
+    knownFor:
+      'Targeting diplomatic and government-linked organizations through regional espionage campaigns that reuse and adapt a broad mix of publicly available tooling.',
+    attribution:
+      'MITRE ATT&CK says Patchwork has not been definitively attributed but that circumstantial evidence suggests the group may be a pro-Indian or Indian entity; the atlas uses India as a cautious country-level origin inference.',
+    sourceLabel: 'MITRE ATT&CK, updated Oct 2025',
+  },
+  {
+    id: 'sidewinder',
+    name: 'Sidewinder',
+    type: 'state-linked-theft',
+    country: 'India',
+    city: 'New Delhi',
+    lat: 28.6139,
+    lng: 77.209,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2012,
+    scope: 'Regional',
+    aliases: ['T-APT-04', 'Rattlesnake'],
+    tags: ['South Asia', 'espionage', 'military targeting'],
+    knownFor:
+      'Running long-running espionage campaigns across Asia with a strong focus on military, government, and business targets in neighboring countries.',
+    attribution:
+      'MITRE ATT&CK tracks Sidewinder as a suspected Indian threat actor group active since at least 2012.',
+    sourceLabel: 'MITRE ATT&CK, updated Apr 2024',
+  },
+  {
+    id: 'machete',
+    name: 'Machete',
+    type: 'state-linked-theft',
+    country: 'Venezuela',
+    city: 'Caracas',
+    lat: 10.4806,
+    lng: -66.9036,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2010,
+    scope: 'Regional',
+    aliases: ['APT-C-43', 'El Machete'],
+    tags: ['Latin America', 'espionage', 'government targeting'],
+    knownFor:
+      'Conducting sustained Spanish-language espionage against governments, military organizations, and telecom and power-sector targets across Latin America.',
+    attribution:
+      'MITRE ATT&CK describes Machete as a suspected Spanish-speaking espionage group with a particular emphasis on Venezuela, which this atlas uses as a country-level origin inference.',
+    sourceLabel: 'MITRE ATT&CK, updated Apr 2025',
+  },
+  {
+    id: 'muddywater',
+    name: 'MuddyWater',
+    type: 'state-linked-theft',
+    country: 'Iran',
+    city: 'Tehran',
+    lat: 35.6892,
+    lng: 51.389,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2017,
+    scope: 'Regional',
+    aliases: ['Earth Vetala', 'MERCURY', 'Static Kitten', 'Seedworm', 'TEMP.Zagros', 'Mango Sandstorm', 'TA450'],
+    tags: ['Middle East', 'espionage', 'MOIS-linked'],
+    knownFor:
+      'Using broad phishing and PowerShell-heavy intrusion tradecraft against government, telecom, defense, and energy-sector organizations across the Middle East and beyond.',
+    attribution:
+      'MITRE ATT&CK assesses MuddyWater to be a subordinate element within Iran\'s Ministry of Intelligence and Security, and the atlas maps that activity to Tehran at country level.',
+    sourceLabel: 'MITRE ATT&CK, updated Oct 2025',
+  },
+  {
+    id: 'oilrig',
+    name: 'OilRig',
+    type: 'state-linked-theft',
+    country: 'Iran',
+    city: 'Tehran',
+    lat: 35.6892,
+    lng: 51.389,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2014,
+    scope: 'Regional',
+    aliases: ['APT34', 'COBALT GYPSY', 'Helix Kitten', 'Hazel Sandstorm', 'EUROPIUM', 'TA452'],
+    tags: ['Middle East', 'espionage', 'supply chain'],
+    knownFor:
+      'Targeting government, financial, telecom, and energy-sector organizations in the Middle East with phishing, credential theft, and supply-chain compromise activity.',
+    attribution:
+      'MITRE ATT&CK describes OilRig as a suspected Iranian threat group operating on behalf of the Iranian government, which this atlas maps to Tehran at country level.',
+    sourceLabel: 'MITRE ATT&CK, updated Jan 2025',
+  },
+  {
+    id: 'gamaredon-group',
+    name: 'Gamaredon Group',
+    type: 'state-linked-theft',
+    country: 'Russia',
+    city: 'Moscow',
+    lat: 55.7558,
+    lng: 37.6173,
+    originPrecision: COUNTRY_CAPITAL_PIN,
+    firstSeen: 2013,
+    scope: 'Regional',
+    aliases: ['Shuckworm', 'Primitive Bear', 'Armageddon', 'ACTINIUM', 'DEV-0157', 'Aqua Blizzard'],
+    tags: ['Eastern Europe', 'espionage', 'Ukraine targeting'],
+    knownFor:
+      'Conducting high-volume, persistent espionage operations against military, law enforcement, and civil-society targets in Ukraine through fast-iterating malware and lures.',
+    attribution:
+      'MITRE ATT&CK and public Ukrainian government attribution describe Gamaredon Group as a suspected Russian espionage actor later publicly tied to the FSB.',
+    sourceLabel: 'MITRE ATT&CK, updated Oct 2025',
+  },
+  {
     id: 'project-zero',
     name: 'Project Zero',
     type: 'white-hat',
@@ -1330,15 +1559,100 @@ export const GROUPS = [
       'Secureworks describes CTU as its dedicated threat research team, and longstanding official materials identify the company with Atlanta, Georgia.',
     sourceLabel: 'Secureworks official site',
   },
+  {
+    id: 'jpcert-cc',
+    name: 'JPCERT/CC',
+    type: 'white-hat',
+    country: 'Japan',
+    city: 'Tokyo',
+    lat: 35.6762,
+    lng: 139.6503,
+    originPrecision: CITY_PIN,
+    firstSeen: 1996,
+    scope: 'Regional',
+    aliases: [],
+    tags: ['CSIRT', 'coordination', 'Asia Pacific'],
+    knownFor:
+      'Serving as Japan\'s long-running incident coordination center and playing a central role in regional CSIRT collaboration, vulnerability handling, and threat analysis.',
+    attribution:
+      'JPCERT/CC identifies itself as Japan\'s first CSIRT and lists its office address in Tokyo, which the atlas uses as its organization origin.',
+    sourceLabel: 'JPCERT/CC official site',
+  },
+  {
+    id: 'cert-br',
+    name: 'CERT.br',
+    type: 'white-hat',
+    country: 'Brazil',
+    city: 'Sao Paulo',
+    lat: -23.5558,
+    lng: -46.6396,
+    originPrecision: CITY_PIN,
+    firstSeen: 1997,
+    scope: 'Regional',
+    aliases: [],
+    tags: ['national CSIRT', 'incident coordination', 'Brazil'],
+    knownFor:
+      'Coordinating national incident response in Brazil while publishing statistics, running sensor projects, and supporting community knowledge transfer.',
+    attribution:
+      'CERT.br describes itself as Brazil\'s national CSIRT of last resort maintained by NIC.br; the atlas uses Sao Paulo as the organization origin point.',
+    sourceLabel: 'CERT.br official site',
+  },
+  {
+    id: 'enisa',
+    name: 'ENISA',
+    type: 'white-hat',
+    country: 'Greece',
+    city: 'Heraklion',
+    lat: 35.3387,
+    lng: 25.1442,
+    originPrecision: CITY_PIN,
+    firstSeen: 2004,
+    scope: 'Regional',
+    aliases: ['European Union Agency for Cybersecurity'],
+    tags: ['EU cybersecurity', 'policy', 'capacity building'],
+    knownFor:
+      'Supporting European cyber resilience through threat landscape work, policy support, exercises, and capacity-building for member states and EU institutions.',
+    attribution:
+      'ENISA identifies itself as the European Union Agency for Cybersecurity, and official ENISA materials describe Heraklion, Crete as the agency seat used here.',
+    sourceLabel: 'ENISA official site',
+  },
+  {
+    id: 'apcert',
+    name: 'APCERT',
+    type: 'white-hat',
+    country: 'Japan',
+    city: 'Tokyo',
+    lat: 35.6762,
+    lng: 139.6503,
+    originPrecision: CITY_PIN,
+    firstSeen: 2003,
+    scope: 'Regional',
+    aliases: ['Asia Pacific Computer Emergency Response Team'],
+    tags: ['regional coordination', 'Asia Pacific', 'CSIRT network'],
+    knownFor:
+      'Connecting incident response teams across the Asia Pacific region to improve coordination, information sharing, and joint preparedness for regional cyber incidents.',
+    attribution:
+      'APCERT describes itself as a regional network of computer emergency response teams, and its official structure page identifies JPCERT/CC in Tokyo as the secretariat used here as the map origin point.',
+    sourceLabel: 'APCERT official site',
+  },
 ];
 
 export function getTypeMeta(type) {
   return TYPE_META[type] ?? TYPE_META.hybrid;
 }
 
+export function hasMapLocation(group) {
+  return Number.isFinite(group.lat) && Number.isFinite(group.lng);
+}
+
+export function getLocationLabel(group) {
+  if (!hasMapLocation(group)) return group.originPrecision;
+  return `${group.city}, ${group.country}`;
+}
+
 export function getDisplayName(group) {
   const parts = [group.name, ...(group.aliases ?? [])]
-    .flatMap((value) => String(value).split(/\s*\/\s*/))
+    .flatMap((value) => String(value).split(/\s+\/\s+/))
     .map((value) => value.trim())
     .filter(Boolean);
 

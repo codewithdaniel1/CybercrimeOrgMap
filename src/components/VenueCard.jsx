@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDisplayName, getTypeMeta } from '../data/groups.js';
+import { getDisplayName, getLocationLabel, getTypeMeta } from '../data/groups.js';
 
 function pillStyle(meta) {
   return {
@@ -17,6 +17,7 @@ function pillStyle(meta) {
 export default function VenueCard({ venue, selected, onClick }) {
   const type = getTypeMeta(venue.type);
   const displayName = getDisplayName(venue);
+  const locationLabel = getLocationLabel(venue);
 
   return (
     <div
@@ -45,7 +46,7 @@ export default function VenueCard({ venue, selected, onClick }) {
             {displayName}
           </div>
           <div style={{ fontSize: '10px', color: 'var(--text-faint)', marginTop: '3px' }}>
-            {venue.city}, {venue.country}
+            {locationLabel}
           </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px', flexShrink: 0 }}>

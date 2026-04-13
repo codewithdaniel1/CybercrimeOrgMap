@@ -24,7 +24,9 @@ npm run dev
 
 The app now uses a bundled static dataset instead of live venue lookups. The map centers on the world, and the sidebar tracks whichever mapped groups are currently inside the viewport.
 
-The current dataset blends cybercrime groups, cyber-enabled financial fraud actors, blockchain / crypto theft actors, hacktivist groups, hybrid actors that mix financial and political motives, and a set of prominent white-hat / defensive organizations. It includes both first-tier globally notorious actors and a curated second-tier layer of widely tracked criminal and defensive groups.
+The current dataset blends cybercrime groups, cyber-enabled financial fraud actors, blockchain / crypto theft actors, hacktivist groups, hybrid actors that mix financial and political motives, and a set of prominent white-hat / defensive organizations. It includes first-tier globally notorious actors, a curated second-tier layer of widely tracked criminal and defensive groups, and a growing third-tier regional layer of actors and coordinators that matter within specific geographies.
+
+The atlas can also include decentralized actors that do not have a defensible fixed geographic origin. Those entries remain searchable and exportable, but they are intentionally not pinned on the map. Current examples include `Anonymous`, `LulzSec`, and `AntiSec`.
 
 Downloadable copies of the dataset are also published in Excel-friendly and machine-readable formats:
 
@@ -71,6 +73,7 @@ The app does not claim precise geolocation of people. Pins represent the best pu
 
 - If reporting names a city, the pin uses that city
 - If reporting only names a country, the pin is placed on the national capital for readability
+- If an actor is publicly described as decentralized or lacking a stable origin, the entry can remain in the dataset without map coordinates
 - If the entry is a legitimate white-hat organization, the pin uses the organization origin described on its official site or the most relevant official office / headquarters location
 - If the entry is a security team inside a larger company, the team name comes from the official product or research page while the pin uses the parent organization’s official headquarters location
 - Latitude and longitude are manually assigned map coordinates used for visualization
@@ -100,6 +103,8 @@ Editorial or normalized by this project:
 Some malicious groups have conflicting or incomplete public attribution. In those cases, the dataset uses the strongest public source I could find, and a small number of entries rely on converging public reporting rather than a single indictment or sanctions notice. White-hat entries are included as official organizations, not attributed threat actors. This repository should be treated as a research-driven visualization layer over public reporting, not as a canonical intelligence database.
 
 Where multiple names clearly refer to the same actor, the atlas keeps one canonical base name in the source data and concatenates the rest into the displayed/exported name, for example `Primary, Alias, Alias`. For defensive organizations, the canonical base name is usually the clearest current official organization or team name rather than a stack of near-duplicate brand variants.
+
+For decentralized collectives such as `Anonymous`, `LulzSec`, and `AntiSec`, the atlas keeps the entry in the searchable dataset and exports but leaves map coordinates blank instead of inventing a symbolic or misleading origin pin.
 
 ## Sources
 
@@ -136,7 +141,16 @@ Primary source families used in the current dataset:
   [Medusa Group](https://attack.mitre.org/groups/G1051/),
   [Mustard Tempest](https://attack.mitre.org/groups/G1020/)
 - Additional MITRE ATT&CK entries:
-  [Andariel](https://attack.mitre.org/groups/G0138/)
+  [Andariel](https://attack.mitre.org/groups/G0138/),
+  [APT-C-36 / Blind Eagle](https://attack.mitre.org/groups/G0099/),
+  [Transparent Tribe](https://attack.mitre.org/groups/G0134/),
+  [SideCopy](https://attack.mitre.org/groups/G1006/),
+  [Patchwork](https://attack.mitre.org/groups/G0040/),
+  [Sidewinder](https://attack.mitre.org/groups/G0121/),
+  [Machete](https://attack.mitre.org/groups/G0095/),
+  [MuddyWater](https://attack.mitre.org/groups/G0069/),
+  [OilRig](https://attack.mitre.org/groups/G0049/),
+  [Gamaredon Group](https://attack.mitre.org/groups/G0047/)
 - CISA and partner advisories:
   [BianLian](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-136a),
   [TraderTraitor](https://www.cisa.gov/sites/default/files/publications/AA22-108A-TraderTraitor-North_Korea_APT_Targets_Blockchain_Companies.pdf),
@@ -152,6 +166,10 @@ Primary source families used in the current dataset:
   [Cosmic Lynx / Agari H2 2020 report](https://www.agari.com/cyber-intelligence-research/e-books/agari-h2-2020-email-fraud-report.pdf),
   [FBI reward notice for Bogachev](https://www.fbi.gov/news/press-releases/reward-announced-for-cyber-fugitive),
   [MoneyTaker / Group-IB report summary](https://www.group-ib.com/media-center/press-releases/moneytaker/)
+- Additional public reporting for decentralized collectives:
+  [Britannica on Anonymous](https://www.britannica.com/topic/Anonymous-internet-group),
+  [Wired on LulzSec and the Anonymous ecosystem](https://www.wired.com/2011/06/lulzsec-interview/),
+  [Wired on AntiSec](https://www.wired.com/2011/06/antisec/)
 - ESET Research:
   [Grandoreiro](https://www.welivesecurity.com/2020/04/28/grandoreiro-how-engorged-can-exe-get/),
   [Guildma](https://www.welivesecurity.com/2020/03/05/guildma-devil-drives-electric/),
@@ -161,6 +179,10 @@ Primary source families used in the current dataset:
   [CERT/CC](https://www.sei.cmu.edu/about/divisions/cert/),
   [CISA](https://www.cisa.gov/about),
   [FIRST](https://www.first.org/about/),
+  [JPCERT/CC](https://www.jpcert.or.jp/english/about/06_5.html),
+  [CERT.br](https://www2.cert.br/en/),
+  [ENISA](https://www.enisa.europa.eu/about-enisa/enisa-timeline),
+  [APCERT](https://www.apcert.org/about/),
   [OWASP Foundation](https://owasp.org/about/),
   [Microsoft Threat Analysis Center](https://www.microsoft.com/en-us/corporate-responsibility/customer-security-trust/microsoft-threat-analysis-center),
   [Microsoft office locations](https://www.microsoft.com/en-us/about/office-locations),

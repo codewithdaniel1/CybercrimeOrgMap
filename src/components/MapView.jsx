@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { getDisplayName, getTypeMeta } from '../data/groups.js';
+import { getDisplayName, getTypeMeta, hasMapLocation } from '../data/groups.js';
 
 const TILE_URL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 const TILE_ATTRIBUTION =
@@ -137,6 +137,7 @@ export default function MapView({ venues, selectedVenue, onSelectVenue, onBounds
         south: bounds.getSouth(),
         east: bounds.getEast(),
         west: bounds.getWest(),
+        zoom: map.getZoom(),
       });
     };
 
@@ -156,7 +157,9 @@ export default function MapView({ venues, selectedVenue, onSelectVenue, onBounds
     const map = mapRef.current;
     if (!map) return;
 
-    const currentIds = new Set(venues.map((group) => group.id));
+    const mappableVenues = venues.filter(hasMapLocation);
+
+    const currentIds = new Set(mappableVenues.map((group) => group.id));
     const existingIds = new Set(Object.keys(layersRef.current));
 
     existingIds.forEach((id) => {
@@ -168,7 +171,7 @@ export default function MapView({ venues, selectedVenue, onSelectVenue, onBounds
       }
     });
 
-    venues.forEach((group) => {
+    mappableVenues.forEach((group) => {
       if (layersRef.current[group.id]) return;
 
       const color = markerColor(group);
@@ -213,19 +216,20 @@ export default function MapView({ venues, selectedVenue, onSelectVenue, onBounds
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !selectedVenue) return;
+    if (!map || !selectedVenue || !hasMapLocation(selectedVenue)) return;
 
     map.flyTo([selectedVenue.lat, selectedVenue.lng], 5, { duration: 1.1 });
   }, [selectedVenue]);
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !searchActive || venues.length === 0) return;
+    const mappableVenues = venues.filter(hasMapLocation);
+    if (!map || !searchActive || mappableVenues.length === 0) return;
 
-    const bounds = L.latLngBounds(venues.map((group) => [group.lat, group.lng]));
+    const bounds = L.latLngBounds(mappableVenues.map((group) => [group.lat, group.lng]));
     map.fitBounds(bounds, {
       padding: [36, 36],
-      maxZoom: venues.length === 1 ? 5 : 4,
+      maxZoom: mappableVenues.length === 1 ? 5 : 4,
     });
   }, [searchActive, searchKey, venues]);
 

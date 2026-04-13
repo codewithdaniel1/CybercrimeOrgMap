@@ -114,9 +114,8 @@ const injectKeyframes = () => {
   document.head.appendChild(style);
 };
 
-export default function NavBar({ loading, visibleCount, searchQuery, onSearchChange }) {
+export default function NavBar({ loading, totalGroups, searchQuery, onSearchChange }) {
   const [time, setTime] = useState('');
-  const hasSearch = searchQuery.trim().length > 0;
 
   useEffect(() => {
     injectKeyframes();
@@ -142,7 +141,7 @@ export default function NavBar({ loading, visibleCount, searchQuery, onSearchCha
       </div>
       <div style={styles.right}>
         <div style={styles.badge}>
-          {loading ? '…' : `${visibleCount} ${hasSearch ? 'matches' : 'visible'}`}
+          {loading ? '…' : `${totalGroups} total groups`}
         </div>
         <div style={styles.searchWrap}>
           <input

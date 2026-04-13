@@ -1,7 +1,8 @@
-import { GROUPS, getDisplayName, getTypeMeta, scopeWeight } from '../data/groups.js';
+import { GROUPS, getDisplayName, getTypeMeta, hasMapLocation, scopeWeight } from '../data/groups.js';
 
 function matchesBounds(group, bounds) {
   if (!bounds) return true;
+  if (!hasMapLocation(group)) return false;
 
   const withinLat = group.lat >= bounds.south && group.lat <= bounds.north;
   const crossesDateLine = bounds.west > bounds.east;
@@ -40,10 +41,11 @@ function matchesSearch(group, searchQuery) {
 
 export function useGroups(activeFilter, mapBounds, searchQuery) {
   const hasSearch = searchQuery.trim().length > 0;
+  const showAllAtWorldView = (mapBounds?.zoom ?? Infinity) <= 2;
   const groups = GROUPS
     .filter((group) => hasSearch || activeFilter === 'all' || group.type === activeFilter)
     .filter((group) => matchesSearch(group, searchQuery))
-    .filter((group) => hasSearch || matchesBounds(group, mapBounds))
+    .filter((group) => hasSearch || showAllAtWorldView || matchesBounds(group, mapBounds))
     .sort((a, b) => {
       if (a.scope !== b.scope) {
         return scopeWeight(b.scope) - scopeWeight(a.scope);
