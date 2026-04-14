@@ -4,13 +4,13 @@ Hi my name is Daniel. I am a Graduate Student Researcher at NYU Center for Cyber
 
 I created [Cyber Actor Atlas](https://cyberactoratlas.pages.dev/) as an open-source map and downloadable dataset for exploring the publicly reported origins of cyber actors. It is designed as a lightweight research and education resource for people who want a clearer geographic view of how named actors are described in public reporting.
 
-The atlas brings together ransomware groups, banking theft actors, fraud operators, financial crime groups, darknet market operators, hacktivist collectives, state-linked theft groups, access brokers, and a limited set of defensive or white-hat organizations for context.
+The atlas brings together ransomware groups, banking theft actors, fraud operators, financial crime groups, darknet market operators, hacktivist collectives, state-linked theft groups, access brokers, and a broad set of defensive and white-hat organizations for context. Coverage spans actors from Russia, China, North Korea, Iran, Israel, Pakistan, Iraq, Bangladesh, India, Nigeria, Brazil, Cambodia, the Philippines, the United States, Western Europe, and beyond — including decentralized hacktivist coalitions and groups with no fixed geographic origin.
 
 ## What You Can Do
 
-- Browse 81 curated actors on an interactive world map
+- Browse 135 curated actors on an interactive world map
 - Search by actor name, alias, tag, or keyword
-- Filter across major actor categories
+- Filter by actor category, including a dedicated **Decentralized** filter for groups with no fixed origin
 - Open a detail panel with origin, aliases, first-seen year, activity summary, and attribution note
 - Download the dataset as CSV or JSON
 

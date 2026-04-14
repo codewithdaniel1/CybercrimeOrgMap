@@ -43,9 +43,14 @@ export function useGroups(activeFilter, mapBounds, searchQuery) {
   const hasSearch = searchQuery.trim().length > 0;
   const showAllAtWorldView = (mapBounds?.zoom ?? Infinity) <= 2;
   const groups = GROUPS
-    .filter((group) => hasSearch || activeFilter === 'all' || group.type === activeFilter)
+    .filter((group) => {
+      if (hasSearch) return true;
+      if (activeFilter === 'all') return true;
+      if (activeFilter === 'decentralized') return !hasMapLocation(group);
+      return group.type === activeFilter;
+    })
     .filter((group) => matchesSearch(group, searchQuery))
-    .filter((group) => hasSearch || showAllAtWorldView || matchesBounds(group, mapBounds))
+    .filter((group) => hasSearch || showAllAtWorldView || activeFilter === 'decentralized' || matchesBounds(group, mapBounds))
     .sort((a, b) => {
       if (a.scope !== b.scope) {
         return scopeWeight(b.scope) - scopeWeight(a.scope);

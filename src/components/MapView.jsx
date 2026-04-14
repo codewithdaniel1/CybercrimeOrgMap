@@ -327,7 +327,7 @@ export default function MapView({ venues, selectedVenue, onSelectVenue, onBounds
     const map = mapRef.current;
     if (!map) return;
 
-    if (activeFilter === 'all') {
+    if (activeFilter === 'all' || activeFilter === 'decentralized') {
       map.flyTo(INITIAL_CENTER, INITIAL_ZOOM, { duration: 1.0 });
       return;
     }
